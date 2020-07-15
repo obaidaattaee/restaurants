@@ -16,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('test' , function(){
-    return view('admin.layouts.app');
+Route::prefix('admin')->namespace('Admin')->group(function (){
+    Route::resource('menus' , 'MenuController');
 });
