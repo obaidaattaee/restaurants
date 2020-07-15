@@ -15,8 +15,12 @@ class CreateMenusTable extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-
+            $table->string('title')->unique();
+            $table->string('type');
+            $table->text('description');
+            $table->boolean('status');
+            $table->string('image');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
