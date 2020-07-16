@@ -28,5 +28,23 @@
             </li>
             @endforeach
         </ul>--}}
+        <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+            <li class="nav-item start ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-home"></i>
+                    <span class="title">Dashboard</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item start ">
+                        <a href="{{ route('menus.index') }}" class="nav-link ">
+                            <i class="fa fa-bars"></i>
+                            <span class="title">Menus</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
     </div>
 </div>

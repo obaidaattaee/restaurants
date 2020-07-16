@@ -16,6 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::prefix('admin')->namespace('Admin')->group(function (){
+Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function (){
     Route::resource('menus' , 'MenuController');
+    Route::get("/change-password",'UserController@changePassword')->name("change-password");
+    Route::put("/change-password",'UserController@postChangePassword')->name("post-change-password");
+
+
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -6,33 +6,32 @@
 @section("content")
 
 
-    <form method="post" action="#" role="form">
+    <form method="post" enctype="multipart/form-data" action="#" role="form">
         @csrf
         <div class="card-body">
             <div class="form-group">
-                <label for="name">name</label>
-                <input  type="text"  class="form-control" id="name" name="name" placeholder="Enter comment Name">
+                <label for="title">title</label>
+                <input  type="text"  class="form-control" id="title" name="title" placeholder="Enter Menu title">
             </div>
             <div class="form-group">
-                <label for="email">email</label>
-                <input  type="email"  class="form-control" id="email" name="email" placeholder="Enter email">
+                <label for="type">Type</label>
+                <input  type="text"  class="form-control" id="type" name="email" placeholder="Enter type">
             </div>
             <div class="form-group">
-                <label for="website">website</label>
-                <input  type="text"  class="form-control" id="website" name="website" placeholder="Enter website">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" name="description" placeholder="Enter website"></textarea>
+            </div>
+            <div class="form-group row">
+                <div class='col-sm-6'>
+                    <label for="imageFile">Image</label>
+                    <div class="custom-file">
+                        <input type="file" name="imageFile" class="custom-file-input" id="imageFile">
+                    </div>
+                </div>
             </div>
             <div class="form-group">
-                <label for="comment">comment</label>
-                <textarea  class="form-control" id="comment" name="comment" placeholder="Enter comment"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="blog">blog id</label>
-                <input  type="number"  class="form-control" id="blog" name="blog_id" placeholder="Enter blog">
-            </div>
-            <div class="form-group">
-                <input  type="checkbox"   id="published" name="published" >
+                <input  type="checkbox" id="published" name="published" >
                 <label for="published">published</label>
-
             </div>
             <div>
                 <button type="submit" class="btn btn-primary">Submit</button>
