@@ -1,42 +1,47 @@
-@extends("layouts.admin")
+@extends("admin.layouts.app")
 
-@section("title","Edit New Comment")
+@section("title","Edit New Menu")
+
 
 @section("content")
 
 
-    <form method="post" action="{{ route('comments.update' , $comments->id) }}" role="form">
+    <form method="post" action="{{ route('menus.update' , $menu->id) }}" enctype="multipart/form-data"  role="form">
         @csrf
-        @method('PATCH')
+        @method('PUT')
         <div class="card-body">
             <div class="form-group">
-                <label for="name">name</label>
-                <input  type="text"  readonly  class="form-control" id="name" name="name" value="{{$comments->name??''}}">
+                <label for="title">title</label>
+                <input  type="text" value="{{old('title')??$menu->title??''}}" class="form-control" id="title" name="title" placeholder="Enter Menu title">
             </div>
             <div class="form-group">
-                <label for="email">email</label>
-                <input  type="email" readonly  class="form-control" id="email" name="email" value="{{$comments->email??''}}">
+                <label for="type">Parent Menu</label>
+                <select name="parent_id" class="form-control">
+                    <option value="0">new menu</option>
+                    @foreach(\App\Models\Menu::get() as $menu_item)
+                        <option value="{{ $menu_item->id }}">{{ $menu_item->title }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
-                <label for="website">website</label>
-                <input  type="text"  readonly  class="form-control" id="website" name="website" value="{{$comments->website??''}}">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" name="description" placeholder="Enter website"></textarea>
+            </div>
+            <div class="form-group row">
+                <div class='col-sm-6'>
+                    <label for="imageFile">Image</label>
+                    <div class="custom-file">
+                        <input type="file" name="imageFile" class="custom-file-input" id="imageFile">
+                    </div>
+                </div>
             </div>
             <div class="form-group">
-                <label for="comment">comment</label>
-                <textarea  readonly  class="form-control" id="comment" name="comment" placeholder="Enter comment">{{$comments->comment??''}}</textarea>
-            </div>
-            <div class="form-group">
-                <label for="blog">blog id</label>
-                <input  type="number"  class="form-control" id="blog" name="blog_id" value="{{$comments->blog_id??''}}">
-            </div>
-            <div class="form-group">
-                <input  type="checkbox"   id="published" name="published" {{$comments->published?'checked':''}} >
-                <label for="published">published</label>
-
+                <input  type="checkbox" id="status" name="status" >
+                <label for="status">select for active</label>
             </div>
             <div>
                 <button type="submit" class="btn btn-primary">Submit</button>
-                <a class='btn btn-danger' href='{{route('comments.index')}}'>Cancel</a>
+                <a class='btn btn-danger' href='{{route('menus.index')}}'>Cancel</a>
             </div>
         </div>
     </form>

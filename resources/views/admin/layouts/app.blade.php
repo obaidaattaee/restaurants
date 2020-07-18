@@ -31,7 +31,7 @@
 
 
         @yield("css")
-        
+
     </head>
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-md">
         <!-- BEGIN HEADER -->
@@ -68,7 +68,7 @@
             </div>
         </div>
         <div class="page-footer">
-            <div class="page-footer-inner"> {{ date("Y") }} &copy; NDC Laravel CMS Project
+            <div class="page-footer-inner"> {{ date("Y") }} &copy; Developed by Hatem & Obaida
 
                 <div class="scroll-to-top">
                     <i class="icon-arrow-up"></i>

@@ -29,6 +29,6 @@ class CreataMealItemTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('meal_item');
     }
 }

@@ -6,16 +6,22 @@
 @section("content")
 
 
-    <form method="post" enctype="multipart/form-data" action="#" role="form">
+    <form method="post" action="{{ route('menus.store') }}" enctype="multipart/form-data"  role="form">
         @csrf
+        @method('post')
         <div class="card-body">
             <div class="form-group">
                 <label for="title">title</label>
                 <input  type="text"  class="form-control" id="title" name="title" placeholder="Enter Menu title">
             </div>
             <div class="form-group">
-                <label for="type">Type</label>
-                <input  type="text"  class="form-control" id="type" name="email" placeholder="Enter type">
+                <label for="type">Parent Menu</label>
+                <select name="parent_id" class="form-control">
+                    <option value="0">new menu</option>
+                    @foreach(\App\Models\Menu::get() as $menu)
+                        <option value="{{ $menu->id }}">{{ $menu->title }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
@@ -30,8 +36,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <input  type="checkbox" id="published" name="published" >
-                <label for="published">published</label>
+                <input  type="checkbox" id="status" name="status" >
+                <label for="status">select for active</label>
             </div>
             <div>
                 <button type="submit" class="btn btn-primary">Submit</button>
